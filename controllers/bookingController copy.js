@@ -44,9 +44,7 @@ const createBooking = asyncHandler(async (req, res) => {
     numberOfGuests,
     name,
     phone,
-    numberOfNights,
     price,
-    totalPrice,
     paymentMethod,
     owner,
   } = req.body;
@@ -58,9 +56,7 @@ const createBooking = asyncHandler(async (req, res) => {
     numberOfGuests,
     name,
     phone,
-    numberOfNights,
     price,
-    totalPrice,
     paymentMethod,
     user: user._id,
     owner,
@@ -141,7 +137,9 @@ const getOneUserBooking = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
   const { id } = req.params;
 
-  res.json(await Booking.findOne({ user: user._id, _id: id }).populate('room'));
+  res.json(
+    await Booking.findOne({ user: user._id, _id: id }).populate('room')
+  );
 });
 
 //==================================={Owner Only}=======================================================
@@ -299,9 +297,7 @@ const updateOwnerBooking = asyncHandler(async (req, res) => {
     numberOfGuests,
     name,
     phone,
-    numberOfNights,
     price,
-    totalPrice,
     paymentMethod,
     owner,
     status, // new update
@@ -317,9 +313,7 @@ const updateOwnerBooking = asyncHandler(async (req, res) => {
       numberOfGuests,
       name,
       phone,
-      numberOfNights,
       price,
-      totalPrice,
       paymentMethod,
       owner,
       status,

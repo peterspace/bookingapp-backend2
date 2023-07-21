@@ -12,7 +12,9 @@ const bookingSchema = new mongoose.Schema({
   name: { type: String },
   numberOfGuests: { type: String },
   phone: { type: String },
+  numberOfNights: Number,
   price: Number,
+  totalPrice: Number,
   paymentMethod: { type: String },
   status: { type: String, default: 'Pending' }, // pending, paid, completed, cancel, active
 });
